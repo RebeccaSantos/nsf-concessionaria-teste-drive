@@ -1,0 +1,35 @@
+Requisitos
+
+Permitir que os clientes façam agendamentos 
+
+permitir que sejam consultados os agendamentos
+horario
+
+posibilidade de deletar o horario
+-cargo superior 
+
+posibilidade de alterar
+-cargo superior
+
+
+--TELAS 
+ -consulta
+ -inserir
+ -alterar
+ -deletar
+
+--Ramon 
+--casos de uso
+--diagramas de sequencia
+--frontend
+
+Rebecca 
+--Diagrama de processo
+--Diagrama de classe
+--backend
+
+joao 
+--prototipa��o 
+--MER
+--banco
+
