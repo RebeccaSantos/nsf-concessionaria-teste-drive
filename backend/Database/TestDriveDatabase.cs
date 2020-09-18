@@ -40,5 +40,11 @@ namespace backend.Database
             List<Models.TbAgendamento> agendamento=ctx.TbAgendamento.Include(x=>x.IdClienteNavigation).Include(x=>x.IdFuncionarioNavigation).Where(x=>x.IdCliente==id).ToList();
             return agendamento;
         }
+        public Models.TbAgendamento Agendamento(Models.TbAgendamento ag)
+        {
+            ctx.Add(ag);
+            ctx.SaveChanges();
+            return ag;
+        }
     }
 }

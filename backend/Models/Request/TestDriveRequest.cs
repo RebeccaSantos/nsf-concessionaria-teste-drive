@@ -1,3 +1,4 @@
+using System; 
 namespace backend.Models.Request
 {
     public class TestDriveRequest
@@ -6,6 +7,12 @@ namespace backend.Models.Request
         {
             public string UserName { get; set; }
             public string Senha { get; set; }
+        }
+        public class Agendar
+        {
+            public string Carro { get; set; }
+            public DateTime  Agendamento{ get; set; }
+            public int IdFuncionario { get; set; }
         }
     }
 }

@@ -51,5 +51,28 @@ namespace backend.Utils
 
             return agendamento;
         }
+        public Models.TbAgendamento ParaTabelaAgenda (Models.Request.TestDriveRequest.Agendar ag,int id)
+        {
+            Models.TbAgendamento tb=new Models.TbAgendamento(); 
+
+            tb.DsSituacao="Aguardando aprovação";
+            tb.IdCliente=id;
+            tb.DtAgendamento=ag.Agendamento;
+            tb.HrAgendamento=ag.Agendamento.TimeOfDay;
+            tb.DsCarro=ag.Carro;
+            tb.IdFuncionario=ag.IdFuncionario;
+
+            return tb;
+        }
+        public Models.Response.TestDriveResponse.ClienteAgendar ParaResponseagendar(Models.TbAgendamento ag)
+        {
+            Models.Response.TestDriveResponse.ClienteAgendar agendar=new Models.Response.TestDriveResponse.ClienteAgendar();
+            agendar.Carro=ag.DsCarro;
+            agendar.Dia=ag.DtAgendamento;
+            agendar.Funcionario=ag.IdFuncionario;
+            agendar.Situacao=ag.DsSituacao;
+            agendar.Id=ag.IdAgendamento;
+            return agendar;
+        }
     } 
 }

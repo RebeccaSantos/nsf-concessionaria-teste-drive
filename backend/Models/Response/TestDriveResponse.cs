@@ -26,5 +26,15 @@ namespace backend.Models.Response
             public string Situacao{ get; set; }
 
         }
+        
+        public class ClienteAgendar
+        {
+            public int?  Id { get; set; }
+            public int? Funcionario { get; set; }
+            public string Carro { get; set; }
+            public DateTime?  Dia { get; set; }
+            public string Situacao{ get; set; }
+
+        }
     }
 }

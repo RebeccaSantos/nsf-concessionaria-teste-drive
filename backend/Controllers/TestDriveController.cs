@@ -47,15 +47,23 @@ namespace backend.Controllers
                 
                }  
               
+          }
+          [HttpPost("cliente/{id}")]
+          public Models.Response.TestDriveResponse.ClienteAgendar agendar(Models.Request.TestDriveRequest.Agendar ag,int id)
+          {
+               Models.TbAgendamento tb=conversor.ParaTabelaAgenda(ag,id);
+               business.ValidarAgendamento(tb);
+               return conversor.ParaResponseagendar(tb);
+                 
+          }
+    }
                 
+}
                
             
          
-          }
           
                 
 
              
         
-    }
-}

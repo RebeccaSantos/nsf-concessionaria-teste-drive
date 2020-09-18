@@ -40,5 +40,21 @@ namespace backend.Business
 
             return database.Agendamentos(id);
         }
+        public Models.TbAgendamento ValidarAgendamento(Models.TbAgendamento ag)
+        {
+                if(ag.IdCliente<=0)
+                    throw new ArgumentException("id invalido");
+
+                if(ag.IdFuncionario<=0)
+                    throw new ArgumentException("id invalido");
+
+                if(ag.DtAgendamento==new DateTime())
+                throw new ArgumentException("Essa Data ja passou");
+
+                if(string.IsNullOrEmpty(ag.DsCarro))
+                     throw new ArgumentException("Descrição do carro invalida");
+             
+             return database.Agendamento(ag);
+        }
     }
 }
