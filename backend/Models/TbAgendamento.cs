@@ -11,19 +11,22 @@ namespace backend.Models
         [Key]
         [Column("id_agendamento", TypeName = "int(11)")]
         public int IdAgendamento { get; set; }
-        [Column("ds_carro", TypeName = "varchar(255)")]
-        public string DsCarro { get; set; }
-        [Column("dt_agendamento", TypeName = "date")]
+        [Column("dt_agendamento", TypeName = "datetime")]
         public DateTime? DtAgendamento { get; set; }
-        [Column("hr_agendamento", TypeName = "time")]
-        public TimeSpan? HrAgendamento { get; set; }
         [Column("ds_situacao", TypeName = "varchar(255)")]
         public string DsSituacao { get; set; }
+        [Column("vl_feedback", TypeName = "decimal(5,2)")]
+        public decimal? VlFeedback { get; set; }
         [Column("id_cliente", TypeName = "int(11)")]
         public int? IdCliente { get; set; }
         [Column("id_funcionario", TypeName = "int(11)")]
         public int? IdFuncionario { get; set; }
+        [Column("id_carro", TypeName = "int(11)")]
+        public int? IdCarro { get; set; }
 
+        [ForeignKey(nameof(IdCarro))]
+        [InverseProperty(nameof(TbCarro.TbAgendamento))]
+        public virtual TbCarro IdCarroNavigation { get; set; }
         [ForeignKey(nameof(IdCliente))]
         [InverseProperty(nameof(TbCliente.TbAgendamento))]
         public virtual TbCliente IdClienteNavigation { get; set; }

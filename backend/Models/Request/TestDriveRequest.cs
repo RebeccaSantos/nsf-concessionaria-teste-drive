@@ -14,5 +14,9 @@ namespace backend.Models.Request
             public DateTime  Agendamento{ get; set; }
             public int IdFuncionario { get; set; }
         }
+        public class RequestFeedback
+        {
+            public decimal Feedback { get; set; }
+        }
     }
 }

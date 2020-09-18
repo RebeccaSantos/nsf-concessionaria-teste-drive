@@ -4,18 +4,19 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace backend.Models
 {
-    public partial class testdriveContext : DbContext
+    public partial class TestDriveContext : DbContext
     {
-        public testdriveContext()
+        public TestDriveContext()
         {
         }
 
-        public testdriveContext(DbContextOptions<testdriveContext> options)
+        public TestDriveContext(DbContextOptions<TestDriveContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<TbAgendamento> TbAgendamento { get; set; }
+        public virtual DbSet<TbCarro> TbCarro { get; set; }
         public virtual DbSet<TbCliente> TbCliente { get; set; }
         public virtual DbSet<TbFuncionario> TbFuncionario { get; set; }
         public virtual DbSet<TbLogin> TbLogin { get; set; }
@@ -24,8 +25,8 @@ namespace backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=1234;database=testdrive", x => x.ServerVersion("5.7.30-mysql"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=1234;database=TestDrive", x => x.ServerVersion("5.7.30-mysql"));
             }
         }
 
@@ -36,19 +37,23 @@ namespace backend.Models
                 entity.HasKey(e => e.IdAgendamento)
                     .HasName("PRIMARY");
 
+                entity.HasIndex(e => e.IdCarro)
+                    .HasName("id_carro");
+
                 entity.HasIndex(e => e.IdCliente)
                     .HasName("id_cliente");
 
                 entity.HasIndex(e => e.IdFuncionario)
                     .HasName("id_funcionario");
 
-                entity.Property(e => e.DsCarro)
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
-
                 entity.Property(e => e.DsSituacao)
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
+
+                entity.HasOne(d => d.IdCarroNavigation)
+                    .WithMany(p => p.TbAgendamento)
+                    .HasForeignKey(d => d.IdCarro)
+                    .HasConstraintName("tb_agendamento_ibfk_3");
 
                 entity.HasOne(d => d.IdClienteNavigation)
                     .WithMany(p => p.TbAgendamento)
@@ -59,6 +64,24 @@ namespace backend.Models
                     .WithMany(p => p.TbAgendamento)
                     .HasForeignKey(d => d.IdFuncionario)
                     .HasConstraintName("tb_agendamento_ibfk_2");
+            });
+
+            modelBuilder.Entity<TbCarro>(entity =>
+            {
+                entity.HasKey(e => e.IdCarro)
+                    .HasName("PRIMARY");
+
+                entity.Property(e => e.DsMarca)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.DsModelo)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.DsPlaca)
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
             });
 
             modelBuilder.Entity<TbCliente>(entity =>

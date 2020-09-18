@@ -14,7 +14,8 @@ namespace backend.Controllers
     {
      Business.TestDriveBusiness business=new Business.TestDriveBusiness();
         Utils.TestDriveConversor conversor=new Utils.TestDriveConversor();
-        [HttpGet("Login")]
+       
+        [HttpPost("Login")]
         public  ActionResult<Models.Response.TestDriveResponse.Login> VerificarLogin(Models.Request.TestDriveRequest.Login req)
         {
             try
@@ -48,14 +49,21 @@ namespace backend.Controllers
                }  
               
           }
-          [HttpPost("cliente/{id}")]
-          public Models.Response.TestDriveResponse.ClienteAgendar agendar(Models.Request.TestDriveRequest.Agendar ag,int id)
-          {
-               Models.TbAgendamento tb=conversor.ParaTabelaAgenda(ag,id);
-               business.ValidarAgendamento(tb);
-               return conversor.ParaResponseagendar(tb);
+         // [HttpPost("cliente/{id}")]
+          //public Models.Response.TestDriveResponse.ClienteAgendar agendar(Models.Request.TestDriveRequest.Agendar ag,int id)
+          //{
+               //Models.TbAgendamento tb=conversor.ParaTabelaAgenda(ag,id);
+               //business.ValidarAgendamento(tb);
+               //return conversor.ParaResponseagendar(tb);
                  
-          }
+          //}
+         /* [HttpPut("feedback/{id}")]
+          public Models.Response.TestDriveResponse.ResponseFeedback RealizarFeedback(Models.Request.TestDriveRequest.RequestFeedback req,int id)
+          {
+               Models.TbAgendamento tb=business.ValidarFeedback(req,id);
+               return conversor.ParaResponseFeedback(tb);
+          }*/
+
     }
                 
 }

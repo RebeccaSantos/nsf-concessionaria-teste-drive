@@ -36,5 +36,9 @@ namespace backend.Models.Response
             public string Situacao{ get; set; }
 
         }
+        public class ResponseFeedback
+        {
+            public decimal Feedback { get; set; }
+        }
     }
 }

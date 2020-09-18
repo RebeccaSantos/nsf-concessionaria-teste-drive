@@ -16,13 +16,13 @@ namespace backend.Models
         [Key]
         [Column("id_funcionario", TypeName = "int(11)")]
         public int IdFuncionario { get; set; }
-        [Column("ds_carteira_trabalho", TypeName = "varchar(50)")]
-        public string DsCarteiraTrabalho { get; set; }
         [Column("nm_funcionario", TypeName = "varchar(255)")]
         public string NmFuncionario { get; set; }
+        [Column("ds_carteira_trabalho", TypeName = "varchar(50)")]
+        public string DsCarteiraTrabalho { get; set; }
         [Column("ds_email", TypeName = "varchar(255)")]
         public string DsEmail { get; set; }
-        [Column("dt_nascimento", TypeName = "date")]
+        [Column("dt_nascimento", TypeName = "datetime")]
         public DateTime? DtNascimento { get; set; }
         [Column("id_login", TypeName = "int(11)")]
         public int? IdLogin { get; set; }

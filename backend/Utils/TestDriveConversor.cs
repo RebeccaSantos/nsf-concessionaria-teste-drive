@@ -64,8 +64,8 @@ namespace backend.Utils
 
             return tb;
         }
-        public Models.Response.TestDriveResponse.ClienteAgendar ParaResponseagendar(Models.TbAgendamento ag)
-        {
+       // public Models.Response.TestDriveResponse.ClienteAgendar ParaResponseagendar(Models.TbAgendamento ag)
+/*{
             Models.Response.TestDriveResponse.ClienteAgendar agendar=new Models.Response.TestDriveResponse.ClienteAgendar();
             agendar.Carro=ag.DsCarro;
             agendar.Dia=ag.DtAgendamento;
@@ -74,5 +74,13 @@ namespace backend.Utils
             agendar.Id=ag.IdAgendamento;
             return agendar;
         }
-    } 
+    }*/ 
+    /*public Models.Response.TestDriveResponse.ResponseFeedback ParaResponseFeedback(Models.TbAgendamento tb)
+    {
+        Models.Response.TestDriveResponse.ResponseFeedback response=new Models.Response.TestDriveResponse.ResponseFeedback();
+        response.Feedback=tb.VlFeedback;
+
+        return response
+    }*/
+}
 }

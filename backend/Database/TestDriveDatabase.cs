@@ -46,5 +46,12 @@ namespace backend.Database
             ctx.SaveChanges();
             return ag;
         }
+       /* public Models.TbAgendamento Feedback(Models.Request.TestDriveRequest.RequestFeedback req,int id)
+        {
+                Models.TbAgendamento fed=ctx.TbAgendamento.FirstOrDefault(x=>x.IdAgendamento==id);
+                fed.VlFeedback=req.Feedback;
+                ctx.SaveChanges();
+                return fed;
+        }*/
     }
 }

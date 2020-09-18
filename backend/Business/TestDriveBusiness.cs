@@ -56,5 +56,13 @@ namespace backend.Business
              
              return database.Agendamento(ag);
         }
+       /* public Models.TbAgendamento ValidarFeedback(Models.Request.TestDriveRequest.RequestFeedback req ,int id)
+        {
+            if(string.IsNullOrEmpty(req.Feedback))
+                throw new ArgumentException("Feedback invalido");
+                  
+                  return database.Feedback(req,id);
+
+        }*/
     }
 }

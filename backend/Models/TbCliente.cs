@@ -26,7 +26,7 @@ namespace backend.Models
         public string DsRg { get; set; }
         [Column("ds_carteira_motorista", TypeName = "varchar(255)")]
         public string DsCarteiraMotorista { get; set; }
-        [Column("dt_nascimento", TypeName = "date")]
+        [Column("dt_nascimento", TypeName = "datetime")]
         public DateTime? DtNascimento { get; set; }
         [Column("ds_sexo", TypeName = "varchar(50)")]
         public string DsSexo { get; set; }
