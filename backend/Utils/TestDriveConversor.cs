@@ -38,19 +38,18 @@ namespace backend.Utils
            return usuario;
             
         }
-        public Models.Response.TestDriveResponse.FuncionarioLogin ParaResponseFuncionarioLogin(Models.TbFuncionario tb,string descricao)
+        public Models.Response.TestDriveResponse.ClienteAgendamento ParaResponseagenda(Models.TbAgendamento ag)
         {
-            Models.Response.TestDriveResponse.FuncionarioLogin funcionario=new Models.Response.TestDriveResponse.FuncionarioLogin();
-            funcionario.IdLogin=tb.IdLoginNavigation.IdLogin;
-            funcionario.UserName=tb.IdLoginNavigation.DsUsername;
-            funcionario.Descricao=tb.IdLoginNavigation.DsPerfil;
+            Models.Response.TestDriveResponse.ClienteAgendamento agendamento=new Models.Response.TestDriveResponse.ClienteAgendamento();
+            agendamento.Id=ag.IdAgendamento;
+            agendamento.Nome=ag.IdClienteNavigation.NmCliente;
+            agendamento.Cpf=ag.IdClienteNavigation.DsCpf;
+            agendamento.Funcionario=ag.IdFuncionarioNavigation.NmFuncionario;
+            agendamento.Carro=ag.DsCarro;
+            agendamento.Dia=ag.DtAgendamento;
+            agendamento.Situacao=ag.DsSituacao;
 
-            funcionario.IdFuncionario=tb.IdFuncionario;
-            funcionario.Nome=tb.NmFuncionario;
-            funcionario.ClienteFuncionario=descricao;
-
-           return funcionario;
-            
+            return agendamento;
         }
-    }
+    } 
 }

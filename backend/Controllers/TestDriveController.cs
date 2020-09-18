@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace backend.Controllers
     [Route("[controller]")]
     public class TestDriveController:ControllerBase
     {
-        Business.TestDriveBusiness business=new Business.TestDriveBusiness();
+     Business.TestDriveBusiness business=new Business.TestDriveBusiness();
         Utils.TestDriveConversor conversor=new Utils.TestDriveConversor();
         [HttpGet("Login")]
         public  ActionResult<Models.Response.TestDriveResponse.Login> VerificarLogin(Models.Request.TestDriveRequest.Login req)
@@ -29,12 +30,32 @@ namespace backend.Controllers
                 
                 return new NotFoundObjectResult(new Models.Response.erro(404,e.Message));
             }
-
+        }
+        [HttpGet("Cliente/Consultar/{id}")]
+          public ActionResult<List<Models.Response.TestDriveResponse.ClienteAgendamento>> ClienteAgendamentos(int id)
+          {
+               try
+               {
+                    List<Models.TbAgendamento> tb=business.AgendamentosCliente(id);
+                    List<Models.Response.TestDriveResponse.ClienteAgendamento> resp=tb.Select(x=>conversor.ParaResponseagenda(x)).ToList();
+                    return resp;
+               }
+               catch (System.Exception e)
+               {
+                   
+                    return new NotFoundObjectResult(new Models.Response.erro(404,e.Message)); 
+                
+               }  
+              
+                
+               
+            
+         
+          }
           
                 
 
              
         
-        }
     }
 }

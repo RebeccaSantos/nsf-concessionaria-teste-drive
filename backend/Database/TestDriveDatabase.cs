@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 namespace backend.Database
 {
     public class TestDriveDatabase
@@ -33,6 +34,11 @@ namespace backend.Database
         {
                Models.TbFuncionario tabela=ctx.TbFuncionario.FirstOrDefault(x=>x.IdLogin==tb.IdLogin);
                 return tabela;
+        }
+        public List<Models.TbAgendamento> Agendamentos (int id)
+        {
+            List<Models.TbAgendamento> agendamento=ctx.TbAgendamento.Include(x=>x.IdClienteNavigation).Include(x=>x.IdFuncionarioNavigation).Where(x=>x.IdCliente==id).ToList();
+            return agendamento;
         }
     }
 }

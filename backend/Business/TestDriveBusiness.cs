@@ -33,5 +33,12 @@ namespace backend.Business
                 return database.verificarFuncionario(tb);
           
         }
+        public List<Models.TbAgendamento> AgendamentosCliente(int id)
+        {
+                if(id<=0)
+                   throw new ArgumentException("id invalido");
+
+            return database.Agendamentos(id);
+        }
     }
 }
