@@ -5,17 +5,14 @@ import Login from './Pages/Login';
 import Consultar from './Pages/Consultar';
 import Cadastrar from './Pages/Cadastrar';
 
-function Rotas(){
+export default function Rotas(){
     return(
-        <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Login}/>
-        <Route exact path="/consultar" component={Consultar}/>
-        <Route exact path="/cadastrar" component={Cadastrar}/>
-        
-       </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Login}/>
+          <Route exact path="/consultar" component={Consultar}/>
+          <Route exact path="/cadastrar" component={Cadastrar}/>
+        </Switch>
+      </BrowserRouter>
     )
 }
-export default Rotas;
-
