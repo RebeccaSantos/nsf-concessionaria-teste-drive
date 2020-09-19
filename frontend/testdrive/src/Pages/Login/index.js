@@ -8,7 +8,7 @@ export default function Login(){
         <div className="Login">
 
             <div>
-                Teste
+                <input type="text">teste</input>
             </div>
 
         </div>
