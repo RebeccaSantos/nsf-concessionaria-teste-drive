@@ -17,7 +17,7 @@ namespace backend.Utils
             {
                 usuario.IdLogin=tb.IdLoginNavigation.IdLogin;
                 usuario.UserName=tb.IdLoginNavigation.DsUsername;
-                usuario.Descricao="não é funcionario";
+                usuario.Descricao="usuario comum";
                 usuario.IdCliente=tb.IdCliente;
                 usuario.Nome=tb.NmCliente;
                 usuario.ClienteFuncionario=descricao;
@@ -45,42 +45,41 @@ namespace backend.Utils
             agendamento.Nome=ag.IdClienteNavigation.NmCliente;
             agendamento.Cpf=ag.IdClienteNavigation.DsCpf;
             agendamento.Funcionario=ag.IdFuncionarioNavigation.NmFuncionario;
-            agendamento.Carro=ag.DsCarro;
+            agendamento.Carro=ag.IdCarroNavigation.DsModelo;
             agendamento.Dia=ag.DtAgendamento;
             agendamento.Situacao=ag.DsSituacao;
 
             return agendamento;
         }
-        public Models.TbAgendamento ParaTabelaAgenda (Models.Request.TestDriveRequest.Agendar ag,int id)
+        public Models.TbAgendamento ParaTabelaAgenda (Models.Request.TestDriveRequest.Agendar ag,int id,Models.TbCarro car)
         {
             Models.TbAgendamento tb=new Models.TbAgendamento(); 
 
             tb.DsSituacao="Aguardando aprovação";
             tb.IdCliente=id;
             tb.DtAgendamento=ag.Agendamento;
-            tb.HrAgendamento=ag.Agendamento.TimeOfDay;
-            tb.DsCarro=ag.Carro;
+            tb.IdCarro=car.IdCarro;
             tb.IdFuncionario=ag.IdFuncionario;
 
             return tb;
         }
-       // public Models.Response.TestDriveResponse.ClienteAgendar ParaResponseagendar(Models.TbAgendamento ag)
-/*{
+       public Models.Response.TestDriveResponse.ClienteAgendar ParaResponseagendar(Models.TbAgendamento ag)
+        {
             Models.Response.TestDriveResponse.ClienteAgendar agendar=new Models.Response.TestDriveResponse.ClienteAgendar();
-            agendar.Carro=ag.DsCarro;
+            agendar.Carro=ag.IdCarroNavigation.DsModelo;
             agendar.Dia=ag.DtAgendamento;
             agendar.Funcionario=ag.IdFuncionario;
             agendar.Situacao=ag.DsSituacao;
             agendar.Id=ag.IdAgendamento;
             return agendar;
         }
-    }*/ 
-    /*public Models.Response.TestDriveResponse.ResponseFeedback ParaResponseFeedback(Models.TbAgendamento tb)
+    
+    public Models.Response.TestDriveResponse.ResponseFeedback ParaResponseFeedback(Models.TbAgendamento tb)
     {
         Models.Response.TestDriveResponse.ResponseFeedback response=new Models.Response.TestDriveResponse.ResponseFeedback();
         response.Feedback=tb.VlFeedback;
 
-        return response
-    }*/
+        return response;
+    }
 }
 }

@@ -38,7 +38,7 @@ namespace backend.Models.Response
         }
         public class ResponseFeedback
         {
-            public decimal Feedback { get; set; }
+            public decimal? Feedback { get; set; }
         }
     }
 }

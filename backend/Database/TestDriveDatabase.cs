@@ -7,7 +7,7 @@ namespace backend.Database
 {
     public class TestDriveDatabase
     { 
-        Models.testdriveContext ctx=new Models.testdriveContext();
+        Models.TestDriveContext ctx=new Models.TestDriveContext();
         public Models.TbLogin verificarLogin(Models.Request.TestDriveRequest.Login req)
         {
                Models.TbLogin tabela=ctx.TbLogin.FirstOrDefault(x=>x.DsUsername==req.UserName&&
@@ -37,7 +37,10 @@ namespace backend.Database
         }
         public List<Models.TbAgendamento> Agendamentos (int id)
         {
-            List<Models.TbAgendamento> agendamento=ctx.TbAgendamento.Include(x=>x.IdClienteNavigation).Include(x=>x.IdFuncionarioNavigation).Where(x=>x.IdCliente==id).ToList();
+            List<Models.TbAgendamento> agendamento=ctx.TbAgendamento.Include(x=>x.IdClienteNavigation)
+                                                                     .Include(x=>x.IdFuncionarioNavigation)
+                                                                     .Include(x=>x.IdCarroNavigation)
+                                                                     .Where(x=>x.IdCliente==id).ToList();
             return agendamento;
         }
         public Models.TbAgendamento Agendamento(Models.TbAgendamento ag)
@@ -46,12 +49,20 @@ namespace backend.Database
             ctx.SaveChanges();
             return ag;
         }
-       /* public Models.TbAgendamento Feedback(Models.Request.TestDriveRequest.RequestFeedback req,int id)
+        public Models.TbCarro VerificarCarro(string cr)
+        {
+            Models.TbCarro car=ctx.TbCarro.FirstOrDefault(x=>x.DsModelo==cr);
+              
+
+            return car;
+        }
+        public Models.TbAgendamento Feedback(Models.Request.TestDriveRequest.RequestFeedback req,int id)
         {
                 Models.TbAgendamento fed=ctx.TbAgendamento.FirstOrDefault(x=>x.IdAgendamento==id);
                 fed.VlFeedback=req.Feedback;
                 ctx.SaveChanges();
                 return fed;
-        }*/
+        }
+   
     }
 }

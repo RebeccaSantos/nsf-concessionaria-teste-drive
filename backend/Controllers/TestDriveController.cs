@@ -49,20 +49,42 @@ namespace backend.Controllers
                }  
               
           }
-         // [HttpPost("cliente/{id}")]
-          //public Models.Response.TestDriveResponse.ClienteAgendar agendar(Models.Request.TestDriveRequest.Agendar ag,int id)
-          //{
-               //Models.TbAgendamento tb=conversor.ParaTabelaAgenda(ag,id);
-               //business.ValidarAgendamento(tb);
-               //return conversor.ParaResponseagendar(tb);
-                 
-          //}
-         /* [HttpPut("feedback/{id}")]
-          public Models.Response.TestDriveResponse.ResponseFeedback RealizarFeedback(Models.Request.TestDriveRequest.RequestFeedback req,int id)
+          [HttpPost("cliente/{id}")]
+          public ActionResult<Models.Response.TestDriveResponse.ClienteAgendar> agendar(Models.Request.TestDriveRequest.Agendar ag,int id)
           {
-               Models.TbAgendamento tb=business.ValidarFeedback(req,id);
-               return conversor.ParaResponseFeedback(tb);
-          }*/
+               try
+               {
+                    Models.TbCarro car=business.Verificarcarro(ag.Carro);
+                    if(car==null)
+                       return  NotFound();
+
+                    Models.TbAgendamento tb=conversor.ParaTabelaAgenda(ag,id,car);
+                    business.ValidarAgendamento(tb);
+                    return conversor.ParaResponseagendar(tb);
+               }
+               catch (System.Exception e)
+               {
+                   
+                   return  BadRequest(new Models.Response.erro(400,e.Message));
+               }
+
+                 
+          }
+          [HttpPut("feedback/{id}")]
+          public ActionResult<Models.Response.TestDriveResponse.ResponseFeedback> RealizarFeedback(Models.Request.TestDriveRequest.RequestFeedback req,int id)
+          {
+              try
+              {
+                   Models.TbAgendamento tb=business.ValidarFeedback(req,id);
+                    return conversor.ParaResponseFeedback(tb);
+                  
+              }
+              catch (System.Exception e)
+              {
+                  
+                  return BadRequest(new Models.Response.erro(400,e.Message));
+              }
+          }
 
     }
                 

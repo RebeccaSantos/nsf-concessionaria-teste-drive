@@ -51,18 +51,25 @@ namespace backend.Business
                 if(ag.DtAgendamento==new DateTime())
                 throw new ArgumentException("Essa Data ja passou");
 
-                if(string.IsNullOrEmpty(ag.DsCarro))
-                     throw new ArgumentException("Descrição do carro invalida");
-             
-             return database.Agendamento(ag);
+                return database.Agendamento(ag);
         }
-       /* public Models.TbAgendamento ValidarFeedback(Models.Request.TestDriveRequest.RequestFeedback req ,int id)
+                
+             
+       public Models.TbAgendamento ValidarFeedback(Models.Request.TestDriveRequest.RequestFeedback req ,int id)
         {
-            if(string.IsNullOrEmpty(req.Feedback))
+            if(req.Feedback<0)
                 throw new ArgumentException("Feedback invalido");
-                  
-                  return database.Feedback(req,id);
+                
+                return database.Feedback(req,id);
 
-        }*/
+        }
+        public Models.TbCarro Verificarcarro(string carro)
+        {
+            if(string.IsNullOrEmpty(carro))
+                throw new ArgumentException("carro é obrigatorio");
+                
+              return database.VerificarCarro(carro);
+        }
     }
 }
+                
