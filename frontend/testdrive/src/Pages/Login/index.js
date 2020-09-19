@@ -8,10 +8,10 @@ export default function Login(){
         <div className="Login">
 
             <div>
-                <input type="text"> Login: </input>
+                <input type="text">  </input>
             </div>
             <div>
-                <input type="text"> Senha: </input>
+                <input type="text">  </input>
             </div>
 
         </div>
