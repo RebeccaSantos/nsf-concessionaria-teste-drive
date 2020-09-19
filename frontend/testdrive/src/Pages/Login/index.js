@@ -10,9 +10,7 @@ export default function Login(){
             <div>
                 <input type="text">  </input>
             </div>
-            <div>
-                <input type="text">  </input>
-            </div>
+            
 
         </div>
     )
