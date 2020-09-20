@@ -10,9 +10,10 @@ function Rotas(){
     return(
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={MenuCliente}/>
-          <Route exact path="/consultar" component={Consultar}/>
-          <Route exact path="/cadastrar" component={Cadastrar}/>
+          <Route path="/" exact={true} component={Login}/>
+          <Route path="/menu" component={MenuCliente}/>
+          <Route path="/consultar" component={Consultar}/>
+          <Route path="/cadastrar" component={Cadastrar}/>
         </Switch>
       </BrowserRouter>
     )
