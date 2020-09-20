@@ -1,14 +1,22 @@
 
 .Container-Cima{
-    
+    justify-content: space-between;
     height: 20vh;
     display: flex;
     align-items: flex-end;
-    margin-left: 40%;   
+       
     
 }
 
 .Container-Baixo{
     
     text-align: center;
+}
+
+.cadastrar{
+    margin-right: 30%;
+}
+
+.agendamentos{
+    margin-left: 30%;
 }
