@@ -81,5 +81,28 @@ namespace backend.Utils
 
         return response;
     }
+    public Models.Response.TestDriveResponse.Carro ParaResponseCarro(Models.TbCarro tb)
+    {
+        Models.Response.TestDriveResponse.Carro response=new Models.Response.TestDriveResponse.Carro();
+        response.IdCarro=tb.IdCarro;
+        response.Marca=tb.DsMarca;
+        response.Modelo=tb.DsModelo;
+        response.Fabricacao=tb.NrAnoFab;
+        response.AnoModelo=tb.NrAnoModel;
+        response.Placa=tb.DsPlaca;
+        
+        return response;
+
+    }
+    public Models.Response.TestDriveResponse.Funcionario ParaResponseFuncionario(Models.TbFuncionario funcionario)
+    {
+        Models.Response.TestDriveResponse.Funcionario f=new Models.Response.TestDriveResponse.Funcionario();
+        f.IdFuncionario=funcionario.IdFuncionario;
+        f.Nome=funcionario.NmFuncionario;
+        f.CateiraTrabalho=funcionario.DsCarteiraTrabalho;
+        f.Email=funcionario.DsEmail;
+
+        return f;
+    }
 }
 }

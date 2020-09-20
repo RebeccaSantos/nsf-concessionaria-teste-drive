@@ -63,6 +63,14 @@ namespace backend.Database
                 ctx.SaveChanges();
                 return fed;
         }
+        public List<Models.TbCarro> ListarCarros()
+        {
+           return ctx.TbCarro.ToList();
+        }
+        public List<Models.TbFuncionario> ListarFuncionarios()
+        {
+            return ctx.TbFuncionario.ToList();
+        }
    
     }
 }

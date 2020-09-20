@@ -48,7 +48,7 @@ namespace backend.Business
                 if(ag.IdFuncionario<=0)
                     throw new ArgumentException("id invalido");
 
-                if(ag.DtAgendamento==new DateTime())
+                if(ag.DtAgendamento==new DateTime()||ag.DtAgendamento<=DateTime.Now)
                 throw new ArgumentException("Essa Data ja passou");
 
                 return database.Agendamento(ag);
@@ -70,6 +70,25 @@ namespace backend.Business
                 
               return database.VerificarCarro(carro);
         }
+
+        public List<Models.TbCarro> ListarCarros()
+        {
+            List<Models.TbCarro> carros=database.ListarCarros();
+
+                if(carros.Count==0)
+                  throw new ArgumentException("ainda não há registros");
+
+                  return carros;
+        }
+        public List<Models.TbFuncionario> ListarFuncionarios()
+        {
+            List<Models.TbFuncionario> funcionarios=database.ListarFuncionarios();
+
+               if(funcionarios.Count==0)
+                  throw new ArgumentException("ainda não há registros");
+
+                  return  funcionarios;
+        }  
     }
 }
                 
