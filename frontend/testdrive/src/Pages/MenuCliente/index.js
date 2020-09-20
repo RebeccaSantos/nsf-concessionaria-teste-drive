@@ -1,19 +1,18 @@
 import React from "react";
-import './style.css';
 import { Link } from "react-router-dom";
 
 
 
-export default function MenuCliente(){
+export default function MenuCliente(props){
     return(
-        <div className="Corpo">
-            <div className="Container-Cima">
+        <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight:"90vh", minWidth:"100vw"}}>
+            <div className="text-center">
                <h3><Link to="/Consultar">Consultar Agendamentos</Link></h3>
 
                <h3><Link to="/Cadastrar">Fazer Agendamentos</Link></h3>
             </div>
-            <div className="Container-Baixo">
-                <h1>"Nome do Cliente"</h1>
+            <div className="text-center">
+                <h1>Olá {props.location.state.nome}</h1>
             </div>
         </div>
 
