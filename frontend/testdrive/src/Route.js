@@ -4,15 +4,18 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './Pages/Login';
 import Consultar from './Pages/Consultar';
 import Cadastrar from './Pages/Cadastrar';
+import MenuCliente from './Pages/MenuCliente';
 
-export default function Rotas(){
+function Rotas(){
     return(
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Login}/>
+          <Route exact path="/" component={MenuCliente}/>
           <Route exact path="/consultar" component={Consultar}/>
           <Route exact path="/cadastrar" component={Cadastrar}/>
         </Switch>
       </BrowserRouter>
     )
 }
+
+export default Rotas;
