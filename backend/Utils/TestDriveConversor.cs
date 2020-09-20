@@ -59,7 +59,6 @@ namespace backend.Utils
             tb.IdCliente=id;
             tb.DtAgendamento=ag.Agendamento;
             tb.IdCarro=car.IdCarro;
-            tb.IdFuncionario=ag.IdFuncionario;
 
             return tb;
         }

@@ -12,7 +12,7 @@ namespace backend.Models.Request
         {
             public string Carro { get; set; }
             public DateTime  Agendamento{ get; set; }
-            public int IdFuncionario { get; set; }
+    
         }
         public class RequestFeedback
         {

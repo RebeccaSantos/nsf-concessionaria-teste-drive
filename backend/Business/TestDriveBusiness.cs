@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
+
 
 namespace backend.Business
 {
@@ -50,6 +52,12 @@ namespace backend.Business
 
                 if(ag.DtAgendamento==new DateTime()||ag.DtAgendamento<=DateTime.Now)
                 throw new ArgumentException("Essa Data ja passou");
+
+                if(ag.DtAgendamento.Value.DayOfWeek==DayOfWeek.Saturday||
+                ag.DtAgendamento.Value.DayOfWeek==DayOfWeek.Sunday)
+                        throw new  ArgumentException("Não atendemos aos finais de semana");
+
+
 
                 return database.Agendamento(ag);
         }
