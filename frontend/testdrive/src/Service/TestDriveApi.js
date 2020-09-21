@@ -12,6 +12,7 @@ export default class TestDriveApi{
         }
 
         async consultar(id) {
+            console.log(id);
             const resp = await api.get(`/Cliente/Consultar/${id}`);
             console.log(resp.data)
           

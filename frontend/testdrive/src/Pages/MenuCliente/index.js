@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 
 
 export default function MenuCliente(props){
+    
+
+    const [infos, setInfos] = useState(props.location.state);
+
+    console.log(infos);
+
     return(
         <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight:"90vh", minWidth:"100vw"}}>
             <div className="text-center">
-               <h3><Link to="/Consultar">Consultar Agendamentos</Link></h3>
+               <h3><Link to={{pathname:"/Consultar", state: infos}} >Consultar Agendamentos</Link></h3>
 
                <h3><Link to="/Cadastrar">Fazer Agendamentos</Link></h3>
             </div>

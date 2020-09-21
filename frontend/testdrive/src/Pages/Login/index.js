@@ -10,14 +10,14 @@ export default function Logar() {
   const [username, setUsername] = useState("");
   const [senha, setSenha] = useState("");
 
-  const logar = async () => {
+  const logar = async (e) => {
+    e.preventDefault();
     try {
       const m = {
         username:username,
         senha:senha
       };
       const a = await api.login(m);
-      console.log(a.data)
       navegacao.push("/menu",a.data);
     } catch (e) {
       console.log(e.response)
@@ -26,6 +26,7 @@ export default function Logar() {
 
   return (
     <div>
+      <form>
       <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight:"90vh", minWidth:"100vw"}}>
 
         <div className="display-4 text-center mb-5">Fazer login</div>
@@ -45,11 +46,12 @@ export default function Logar() {
             </div>
           </div>
           <div>
-            <button type="button" className="btn btn-primary" onClick={logar}>Logar</button>
+            <button type="submit" className="btn btn-primary" onClick={logar}>Logar</button>
           </div>
         </div>
 
       </div>
+      </form>
     </div>
   );
 }
