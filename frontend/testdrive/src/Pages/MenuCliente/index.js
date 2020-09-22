@@ -1,33 +1,22 @@
-import React from "react";
-import './style.css';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import 'style.css';
 
 
+export default function MenuCliente(props){
+    const [infos, setInfos] = useState(props.location.state);
 
-export default function MenuCliente(){
+    console.log(infos);
     return(
-        <div className="Corpo">
+        <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight:"90vh", minWidth:"100vw"}}>
+            <div className="text-center">
+               <h3><Link to={{pathname:"/Consultar", state: infos}} >Consultar Agendamentos</Link></h3>
 
-            <div className="Container-Cima">
-
-                <div className="agendamentos">
-                    <h3><Link to="/Consultar">Consultar Agendamentos</Link></h3>
-                </div>
-
-                <div className="cadastrar">
-                    <h3><Link to="/Cadastrar">Fazer Agendamentos</Link></h3>
-                </div>
-
+               <h3><Link to={{pathname:"/Cadastrar", state: infos}}>Fazer Agendamentos</Link></h3>
             </div>
-
-            <div className="Container-Baixo">
-                <h1>"Nome do Cliente"</h1>
+            <div className="text-center">
+                <h1>Olá {props.location.state.nome}</h1>
             </div>
-
-        </div>
-
-       
-
-        
+        </div> 
     )
 }
