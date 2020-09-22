@@ -40,7 +40,7 @@ namespace backend.Database
             List<Models.TbAgendamento> agendamento=ctx.TbAgendamento.Include(x=>x.IdClienteNavigation)
                                                                      .Include(x=>x.IdFuncionarioNavigation)
                                                                      .Include(x=>x.IdCarroNavigation)
-                                                                     .Where(x=>x.IdCliente==id).ToList();
+                                                                     .Where(x=>x.IdClienteNavigation.IdCliente==id).ToList();
             return agendamento;
         }
         public Models.TbAgendamento Agendamento(Models.TbAgendamento ag)
@@ -62,6 +62,14 @@ namespace backend.Database
                 fed.VlFeedback=req.Feedback;
                 ctx.SaveChanges();
                 return fed;
+        }
+        public List<Models.TbCarro> ListarCarros()
+        {
+           return ctx.TbCarro.ToList();
+        }
+        public List<Models.TbFuncionario> ListarFuncionarios()
+        {
+            return ctx.TbFuncionario.ToList();
         }
    
     }

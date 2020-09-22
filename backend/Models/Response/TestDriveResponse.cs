@@ -40,5 +40,23 @@ namespace backend.Models.Response
         {
             public decimal? Feedback { get; set; }
         }
+        public class Carro
+        {
+            public int IdCarro { get; set; }
+            public string Marca { get; set; }
+            public string Modelo { get; set; }
+            public int? Fabricacao { get; set; }
+
+            public int? AnoModelo { get; set; }
+            public string Placa { get; set; }
+
+        }
+        public class Funcionario
+        {
+            public int IdFuncionario { get; set; }
+            public string Nome { get; set; }
+            public string  CateiraTrabalho { get; set; }
+            public string Email { get; set; }
+        }
     }
 }

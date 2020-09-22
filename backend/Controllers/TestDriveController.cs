@@ -85,6 +85,34 @@ namespace backend.Controllers
                   return BadRequest(new Models.Response.erro(400,e.Message));
               }
           }
+          [HttpGet("Consultar/Carro")]
+          public  ActionResult<List<Models.Response.TestDriveResponse.Carro>> ListarCarros()
+          {
+            try
+            {
+               List<Models.TbCarro> carro=business.ListarCarros();
+               return carro.Select(x=>conversor.ParaResponseCarro(x)).ToList();
+            }
+            catch (System.Exception e)
+            {
+                
+                return new NotFoundObjectResult(new Models.Response.erro(404,e.Message));
+            }
+          }
+          [HttpGet("funcionarios")]
+          public ActionResult<List<Models.Response.TestDriveResponse.Funcionario>> ListarFuncionarios()
+          {
+             try
+             {
+                 List<Models.TbFuncionario> funcionario=business.ListarFuncionarios();
+                 return funcionario.Select(x=>conversor.ParaResponseFuncionario(x)).ToList();
+             }
+             catch (System.Exception e)
+             {
+                 
+                 return new  NotFoundObjectResult(new Models.Response.erro(404,e.Message));
+             }
+          }
 
     }
                 
