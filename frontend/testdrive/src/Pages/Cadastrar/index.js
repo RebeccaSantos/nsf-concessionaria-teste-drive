@@ -18,7 +18,8 @@ export default function Cadastrar() {
   
 
   const salvar = async () => {
-    const response = await api.cadastrar({
+    const response = await api.agendar({
+      id   : id,
       nome : nome,
       cpf  : cpf,
       carro : carro,
@@ -26,7 +27,10 @@ export default function Cadastrar() {
       funcionario : funcionario,
       situacao : situacao
     });
-    toast.dark('🚀 Agendado, espere a aprovação');
+    toast.dark('🚀 Agendado, espere a aprovação de um funcionario');
+
+    
+  }
 
     const atualizarEstado = (e) => {
       let novoValor = e.target.value;
@@ -50,7 +54,9 @@ export default function Cadastrar() {
 
     return (
       <div className="Tela">
-  
+          <div className="button-Voltar">
+              <Link to="/menu">Voltar para menu</Link>
+          </div>
         <div className="Container1">
             
         </div>
@@ -84,14 +90,17 @@ export default function Cadastrar() {
             </div>
             
   
-  
+            
+
             <div className="button">
-                <button type="button" class="btn btn-primary">Agendar!</button>
+                <button type="button" class="btn btn-primary" onClick={salvar}>Agendar!</button>
             </div>
+
+            
         </div>
         
   
         
       </div>
     );
-} }
+} 
