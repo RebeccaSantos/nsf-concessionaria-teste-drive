@@ -31,7 +31,7 @@ export default class TestDriveApi{
         }
 
         async carros(){
-            const resp = await api.get(`Consultar/Carro`);
+            const resp = await api.get(`/Consultar/Carro`);
              return resp;
         }
     
