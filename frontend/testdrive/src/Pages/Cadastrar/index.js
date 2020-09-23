@@ -8,90 +8,79 @@ import testDriveAPI from "../../Service/TestDriveApi";
 
 const api = new testDriveAPI();
 
-export default function Cadastrar() {
-  const [nome, setNome] = useState('');
-  const [cpf, setCpf] = useState('');
+export default function Cadastrar(props) {
+
+
   const [carro, setCarro] = useState('');
-  const [data, setData] = useState(new Date().toISOString().substr(0, 10));
-  const [funcionario, setFuncionario] = useState('');
-  const [situacao, setSituacao] = useState(true);
+  const [data, setData] = useState('');
+  const [hora, setHora] = useState('');
+  const [carros, setCarros] = useState([]);
+
+  let a = new Date(Number(data.substring(0,4)),Number(data.substring(5,7))-1,Number(data.substring(8,10)),Number(hora.substring(0,2))-3,Number(hora.substring(3,6)));
+
+  let b = a.toISOString().replace("T"," ").substring(0,19);
   
 
-  const salvar = async () => {
-    const response = await api.cadastrar({
-      nome : nome,
-      cpf  : cpf,
-      carro : carro,
-      data  : data,
-      funcionario : funcionario,
-      situacao : situacao
-    });
-    toast.dark('🚀 Agendado, espere a aprovação');
+  const agendar = async () => {
+    try {
+      const m = {
+        Carro : carro,
+        Agendamento  : b
+      };
+      const response = await api.agendar(m,props.location.state.idLogin);
+      toast.dark('🚀 Agendado, espere a aprovação');
+    } catch (e) {
+      console.log(e.response)
+    }
+  };
 
-    const atualizarEstado = (e) => {
-      let novoValor = e.target.value;
-      if (e.target.type === 'number') 
-        novoValor = Number(novoValor);
-      else if (e.target.type === 'checkbox') 
-        novoValor = e.target.checked;
-  
-      switch (e.target.id) {
-        case 'nome': setNome(novoValor); break;
-        case 'cpf': setCpf(novoValor); break;
-        case 'carro': setCarro(novoValor); break;
-        case 'data': setData(novoValor); break;
-        case 'funcionario': setFuncionario(novoValor); break;
-        case 'situacao': setSituacao(novoValor); break;
-        default:
-          break;
-      }
-    };
+  const consultarCarros = async () => {
+    const response = await api.carros();
+    setCarros(response.data);
+  };
+
+  useEffect(() => {
+    consultarCarros();
+  }, []);
 
 
     return (
       <div className="Tela">
   
-        <div className="Container1">
-            
-        </div>
+        <div className="Container1"></div>
   
         <div className="Container2">
-        <h1>Faça seu Agendamento</h1>
+          <h1>Faça seu Agendamento</h1>
           <div className="Carross">
-            
-            <select name="Carros" id="cars">
-                <option value="Escolha seu Carro">Escolha seu Carro</option>
-                <option value="Sedan">Sedan</option>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+            <select name="Carros" id="cars" onChange={(e) => setCarro(e.target.value)}>
+              <option value="Escolha seu Carro">Escolha seu Carro</option>
+              {carros.map((item)=>(
+                <option value={item.modelo}>{item.modelo}</option>
+              ))}
             </select>
           </div> 
   
-            <br></br>
+          <br></br>
   
-            <div className="Data">
-              Dia
-              <input type="date"></input>
-            </div>
+          <div className="Data">
+            Dia: 
+            <input id="Dia" type="date" value={data} onChange={(e) => setData(e.target.value)}></input>
+          </div>
   
-            <br></br>
+          <br></br>
   
-            <div className="Hora">
-              Hora
-              <input type="time"></input>
-            </div>
+          <div className="Hora">
+            Hora: 
+            <input id="Hora" type="time" value={hora} onChange={(e) => setHora(e.target.value)}></input>
+          </div>
             
   
-  
-            <div className="button">
-                <button type="button" class="btn btn-primary">Agendar!</button>
-            </div>
-        </div>
-        
-  
-        
+          <div className="button">
+            <button type="button" class="btn btn-primary" onClick={agendar}>Agendar!</button>
+          </div>
+
+        </div>  
+        <ToastContainer />
       </div>
     );
-} }
+}
