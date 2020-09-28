@@ -10,7 +10,7 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ClienteTestDrive:ControllerBase
+    public class Cliente:ControllerBase
     {
         Business.AgendamentoBusiness business = new Business.AgendamentoBusiness();
         Utils.TestDriveConversor conversor = new Utils.TestDriveConversor();

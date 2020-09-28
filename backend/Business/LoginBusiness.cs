@@ -10,7 +10,7 @@ namespace backend.Business
     public class LoginBusiness
     {
         Database.LoginDatabase database=new Database.LoginDatabase();
-        Validar.ValidarTestDrive validar=new Validar.ValidarTestDrive();
+        Validar.ValidardorTestDrive validar=new Validar.ValidardorTestDrive();
         public Models.TbLogin VerificarLogin(Models.Request.TestDriveRequest.Login req )
         {
             Models.TbLogin tabela=database.verificarLogin(req);
