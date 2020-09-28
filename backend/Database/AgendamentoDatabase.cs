@@ -12,7 +12,7 @@ namespace backend.Database
             List<Models.TbAgendamento> agendamento = ctx.TbAgendamento.Include(x => x.IdClienteNavigation)
                                                                      .Include(x => x.IdFuncionarioNavigation)
                                                                      .Include(x => x.IdCarroNavigation)
-                                                                     .Where(x => x.IdClienteNavigation.IdCliente == id).ToList();
+                                                                     .Where(x => x.IdClienteNavigation.IdLogin == id).ToList();
             return agendamento;
         }
         public Models.TbAgendamento SalvarAgendamento(Models.TbAgendamento ag)
