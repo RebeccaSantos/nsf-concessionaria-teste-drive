@@ -10,6 +10,9 @@ const api = new testDriveAPI();
 
 export default function Cadastrar(props) {
 
+  const [infos, setInfos] = useState(props.location.state);
+
+  console.log(infos)
 
   const [carro, setCarro] = useState('');
   const [data, setData] = useState('');
@@ -27,7 +30,7 @@ export default function Cadastrar(props) {
         Carro : carro,
         Agendamento  : b
       };
-      const response = await api.agendar(m,props.location.state.idLogin);
+      const response = await api.agendar(m, );
       toast.dark('🚀 Agendado, espere a aprovação');
     } catch (e) {
       toast.error(e.response.data.msg);
@@ -79,6 +82,7 @@ export default function Cadastrar(props) {
             <button type="button" class="btn btn-primary" onClick={agendar}>Agendar!</button>
           </div>
 
+          <Link to={{pathname:"/menuCliente", state: infos}}>Voltar para o menu</Link>
         </div>  
         <ToastContainer />
       </div>

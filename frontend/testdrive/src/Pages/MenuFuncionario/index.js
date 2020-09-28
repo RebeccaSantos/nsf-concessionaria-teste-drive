@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function MenuCliente(props){
+export default function MenuFuncionario(props){
 
     const [infos, setInfos] = useState(props.location.state);
 
@@ -11,9 +11,8 @@ export default function MenuCliente(props){
                 <h1>Olá {props.location.state.nome}</h1>
             </div>
             <div className="text-center">
-               <h3><Link to={{pathname:"/Consultar", state: infos}}>Consultar agendamentos aprovados</Link></h3>
-
-               <h3><Link to={{pathname:"/Cadastrar", state: infos}}>Agendar</Link></h3>
+               <h3><Link to={{pathname:"/aprovarAgendamentos", state: infos}}>Aprovar agendamentos</Link></h3>
+               <h3><Link to={{pathname:"/agendamentosDoDiaFunc", state: infos}}>Agendamentos do dia</Link></h3>
             </div>
         </div> 
     )

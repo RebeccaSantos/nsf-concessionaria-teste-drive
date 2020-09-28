@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import testDriveAPI from "../../Service/TestDriveApi";
 const api = new testDriveAPI();
@@ -18,9 +20,14 @@ export default function Logar() {
         senha:senha
       };
       const a = await api.login(m);
-      navegacao.push("/menu",a.data);
+      console.log(a)
+      if(a.data.clienteFuncionario == "Cliente"){
+        navegacao.push("/menuCliente",a.data);
+      } else{
+        navegacao.push("/menuFuncionario",a.data)
+      }
     } catch (e) {
-      console.log(e.response)
+      toast.error(e.response.data.msg);
     }
   }
 

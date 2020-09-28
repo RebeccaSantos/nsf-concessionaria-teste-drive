@@ -8,7 +8,7 @@ const api = new testDriveAPI();
 
 
 export default function Consultar(props) {
-  console.log(props.location.state)
+  const [infos, setInfos] = useState(props.location.state);
   const [lista, setLista] = useState([]);
 
   const consultar = async () => {
@@ -35,6 +35,7 @@ export default function Consultar(props) {
                         <th>Hora</th>
                         <th>Funcionario</th>
                         <th>Situação</th>
+                        <th></th>
                         
                     </tr>
                 </thead>
@@ -49,6 +50,15 @@ export default function Consultar(props) {
                             <td>{item.dia.substring(11)}</td>
                             <td>{item.funcionario }</td>
                             <td>{item.situacao}</td>
+                            <td>
+                              {
+                                item.situacao == "Concluido" ? (
+                                  <Link to={{pathname:"/feedback", state: infos}}>Dar feedback</Link>
+                                ) : (
+                                  <p>Ainda não é possivel dar feedback</p>
+                                )
+                              }
+                            </td>
                         </tr>    
                     )}
                 </tbody>
