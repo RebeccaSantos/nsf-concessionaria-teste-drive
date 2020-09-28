@@ -29,13 +29,34 @@ namespace backend.Controllers
                  return new  NotFoundObjectResult(new Models.Response.erro(404,e.Message));
              }
           }
+
           [HttpGet]
           public ActionResult<List<Models.Response.TestDriveResponse.ClienteAgendamento>> ListarAgendamentos()
           {
-              List<Models.TbAgendamento> agendamentos = business.ListarAgendamentos();
-              List<Models.Response.TestDriveResponse.ClienteAgendamento> resp = agendamentos
+              try
+              {
+                List<Models.TbAgendamento> agendamentos = business.ListarAgendamentos();
+                List<Models.Response.TestDriveResponse.ClienteAgendamento> resp = agendamentos
                                     .Select(x => conversor.ParaResponseagenda(x)).ToList();
                 return resp; 
+              }
+              catch (System.Exception e)
+              {
+                return new NotFoundObjectResult(new Models.Response.erro(404,e.Message));
+              }
           }
+
+          [HttpPut("{id}")]
+          public ActionResult<Models.Response.TestDriveResponse.ClienteAgendamento> AprovarAgendamento(int id)
+          {
+              try
+              {
+                  return conversor.ParaResponseagenda(business.AprovarAgendamento(id));
+              }
+              catch (System.Exception e)
+              {
+                  return BadRequest(new Models.Response.erro(400,e.Message));
+              }
+          } 
     }
 }

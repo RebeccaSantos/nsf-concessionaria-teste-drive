@@ -6,16 +6,15 @@ namespace backend.Validar
     {
         public void Validacao(int? id)
         {
-        
-            ValidarId(id);
+             ValidarId(id);
         }
         public void VerificarLogin(Models.TbLogin tabela)
         {
             if(tabela==null)
                 throw new ArgumentException("username ou senha incorretos");
                 
-                ValidarTexto(tabela.DsUsername);
-                ValidarTexto(tabela.DsSenha);
+            ValidarTexto(tabela.DsUsername);
+            ValidarTexto(tabela.DsSenha);
                 
         }
         public void VerificarCarro(string carro)
