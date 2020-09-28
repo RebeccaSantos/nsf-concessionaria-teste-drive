@@ -1,13 +1,13 @@
 import axios from 'axios';
 const api = axios.create({
-    baseURL: "http://localhost:5000/TestDrive"
+    baseURL: "http://localhost:5000"
   });
 
 
 export default class TestDriveApi{
 
         async login(req){
-            const resp = await api.post('/Login', req);
+            const resp = await api.post('/Login/Login', req);
             return resp;
         }
 
@@ -20,18 +20,18 @@ export default class TestDriveApi{
         }
 
         async agendar(req,id) {
-            const resp = await api.post(`/cliente/${id}`,req);
+            const resp = await api.post(`/Cliente/cliente/${id}`,req);
           
             return resp.data;
         }
 
         async feedback(id,req){
-            const resp = await api.put(`/feedback/${id}`, req);
+            const resp = await api.put(`/Cliente/feedback/${id}`, req);
              return resp;
         }
 
         async carros(){
-            const resp = await api.get(`/Consultar/Carro`);
+            const resp = await api.get(`/Carro/Consultar/Carro`);
              return resp;
         }
     
