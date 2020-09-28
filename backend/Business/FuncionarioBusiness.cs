@@ -16,5 +16,9 @@ namespace backend.Business
 
                   return  funcionarios;
         }
+       public List<Models.TbAgendamento> ListarAgendamentos()
+       {
+           return database.ListarAgendamentos();
+       } 
     }
 }
