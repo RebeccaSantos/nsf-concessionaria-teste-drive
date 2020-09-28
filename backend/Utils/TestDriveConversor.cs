@@ -44,7 +44,11 @@ namespace backend.Utils
             agendamento.Id=ag.IdAgendamento;
             agendamento.Nome=ag.IdClienteNavigation.NmCliente;
             agendamento.Cpf=ag.IdClienteNavigation.DsCpf;
-            agendamento.Funcionario=ag.IdFuncionarioNavigation.NmFuncionario;
+             if(ag.IdFuncionarioNavigation==null)
+                 agendamento.Funcionario="Ainda não definido";
+            else
+                agendamento.Funcionario=ag.IdFuncionarioNavigation.NmFuncionario;
+            
             agendamento.Carro=ag.IdCarroNavigation.DsModelo;
             agendamento.Dia=ag.DtAgendamento;
             agendamento.Situacao=ag.DsSituacao;

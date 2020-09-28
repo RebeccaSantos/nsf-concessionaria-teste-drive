@@ -17,7 +17,7 @@ namespace backend.Database
         }
         public Models.TbAgendamento SalvarAgendamento(Models.TbAgendamento ag)
         {
-            ctx.Add(ag);
+            ctx.TbAgendamento.Add(ag);
             ctx.SaveChanges();
             return ag;
         }
