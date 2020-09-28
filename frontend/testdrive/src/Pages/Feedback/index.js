@@ -16,17 +16,19 @@ export default function Feedback(props){
   const [infos, setInfos] = useState(props.location.state);
   const [nota,setNota] = useState();
 
-  console.log(infos.id);
   console.log(nota);
 
   const feed = async () => {
     try {
       const m = {
-        feedback: Number(nota)
+        Feedback: nota
       };
-      const response = await api.feed(m, infos.id);
-        navegacao.push("/feedback")
+      console.log(m);
+      console.log("id:"+infos.id)
+      const response = await api.feedback(infos.id, m);
+        navegacao.goBack();
       } catch (e) {
+        console.log(e.response)
         toast.error(e);
       }
     };
@@ -34,10 +36,11 @@ export default function Feedback(props){
     return(
         <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight:"90vh", minWidth:"100vw"}}>
             <div className="text-center">
-                Nota:(de 0 a 10 para o atendimento)
-                <input id="nota" type="number" value={nota} onChange={(e) => setNota(e.target.value)}></input>
+                <h5>Dê uma nota de 0 a 10 para a sua experiência</h5>
+                <input id="nota" type="number" value={nota} onChange={(e) => setNota(Number(e.target.value))}></input>
             </div>
-            <button className="btn btn-primary" onClick={feed}>Dar feedback</button>
+            <button className="btn btn-primary mt-4" onClick={feed}>Dar feedback</button>
+            <Link className="mt-4" to={{pathname:"/consultar", state: infos}}>Voltar</Link>
         </div> 
     )
 }

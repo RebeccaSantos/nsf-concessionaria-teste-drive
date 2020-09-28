@@ -6,7 +6,7 @@ namespace backend.Database
 {
     public class CarroDatabase
     {
-        Models.TestDriveContext ctx = new Models.TestDriveContext();
+        Models.testDriveContext ctx = new Models.testDriveContext();
 
 
         public List<Models.TbCarro> ListarCarros()

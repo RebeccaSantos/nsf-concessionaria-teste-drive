@@ -7,7 +7,7 @@ namespace backend.Database
 {
     public class LoginDatabase
     { 
-        Models.TestDriveContext ctx=new Models.TestDriveContext();
+        Models.testDriveContext ctx=new Models.testDriveContext();
         public Models.TbLogin verificarLogin(Models.Request.TestDriveRequest.Login req)
         {
                Models.TbLogin tabela=ctx.TbLogin.FirstOrDefault(x=>x.DsUsername==req.UserName&&

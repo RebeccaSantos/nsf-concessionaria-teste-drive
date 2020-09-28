@@ -50,6 +50,7 @@ namespace backend.Utils
                 agendamento.Funcionario=ag.IdFuncionarioNavigation.NmFuncionario;
             
             agendamento.Carro=ag.IdCarroNavigation.DsModelo;
+            agendamento.Feedback=ag.BtFeedbackDado;
             agendamento.Dia=ag.DtAgendamento;
             agendamento.Situacao=ag.DsSituacao;
 
@@ -61,6 +62,7 @@ namespace backend.Utils
 
             tb.DsSituacao="Aguardando aprovação";
             tb.IdCliente=id;
+            tb.BtFeedbackDado= false;
             tb.DtAgendamento=ag.Agendamento;
             tb.IdCarro=car.IdCarro;
 

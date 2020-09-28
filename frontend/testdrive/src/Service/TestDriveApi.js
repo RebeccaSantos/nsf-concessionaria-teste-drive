@@ -25,7 +25,7 @@ export default class TestDriveApi{
             return resp.data;
         }
 
-        async feedback(req,id){
+        async feedback(id,req){
             const resp = await api.put(`/Cliente/feedback/${id}`, req);
              return resp;
         }

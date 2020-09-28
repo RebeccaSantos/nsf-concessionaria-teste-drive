@@ -10,7 +10,7 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class Cliente:ControllerBase
+    public class ClienteController : ControllerBase
     {
         Business.AgendamentoBusiness business = new Business.AgendamentoBusiness();
         Utils.TestDriveConversor conversor = new Utils.TestDriveConversor();
@@ -50,7 +50,7 @@ namespace backend.Controllers
                }
            }
           [HttpPut("feedback/{id}")]
-          public ActionResult<Models.Response.TestDriveResponse.ResponseFeedback> RealizarFeedback(Models.Request.TestDriveRequest.RequestFeedback req,int id)
+          public ActionResult<Models.Response.TestDriveResponse.ResponseFeedback> RealizarFeedback(int id, Models.Request.TestDriveRequest.RequestFeedback req)
           {
               try
               {

@@ -14,15 +14,15 @@ namespace backend.Models
         }
 
         [Key]
-        [Column("id_carro", TypeName = "int(11)")]
+        [Column("id_carro")]
         public int IdCarro { get; set; }
         [Column("ds_marca", TypeName = "varchar(255)")]
         public string DsMarca { get; set; }
         [Column("ds_modelo", TypeName = "varchar(255)")]
         public string DsModelo { get; set; }
-        [Column("nr_ano_fab", TypeName = "int(11)")]
+        [Column("nr_ano_fab")]
         public int? NrAnoFab { get; set; }
-        [Column("nr_ano_model", TypeName = "int(11)")]
+        [Column("nr_ano_model")]
         public int? NrAnoModel { get; set; }
         [Column("ds_placa", TypeName = "varchar(255)")]
         public string DsPlaca { get; set; }

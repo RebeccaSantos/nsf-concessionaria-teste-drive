@@ -53,7 +53,11 @@ export default function Consultar(props) {
                             <td>
                               {
                                 item.situacao == "Concluido" ? (
-                                  <Link to={{pathname:"/feedback", state: item}}>Dar feedback</Link>
+                                  item.feedback == false ? (
+                                    <Link to={{pathname:"/feedback", state: item}}>Dar feedback</Link>
+                                  ) : (
+                                    <p>Feedback já enviado</p>
+                                  )
                                 ) : (
                                   <p>Ainda não é possivel dar feedback</p>
                                 )

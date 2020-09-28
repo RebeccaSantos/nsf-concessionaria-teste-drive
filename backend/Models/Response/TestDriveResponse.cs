@@ -24,6 +24,7 @@ namespace backend.Models.Response
             public string Carro { get; set; }
             public DateTime?  Dia { get; set; }
             public string Situacao{ get; set; }
+            public bool? Feedback { get; set; }
 
         }
         

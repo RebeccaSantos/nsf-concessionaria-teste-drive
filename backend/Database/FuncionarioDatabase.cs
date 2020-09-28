@@ -6,7 +6,7 @@ namespace backend.Database
 {
     public class FuncionarioDatabase
     {
-        Models.TestDriveContext ctx = new Models.TestDriveContext();
+        Models.testDriveContext ctx = new Models.testDriveContext();
        public List<Models.TbFuncionario> ListarFuncionarios()
         {
             return ctx.TbFuncionario.ToList();

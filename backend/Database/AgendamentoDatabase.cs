@@ -6,7 +6,7 @@ namespace backend.Database
 {
     public class AgendamentoDatabase
     {
-        Models.TestDriveContext ctx = new Models.TestDriveContext();
+        Models.testDriveContext ctx = new Models.testDriveContext();
        public List<Models.TbAgendamento> ListarAgendamentos (int id)
         {
             List<Models.TbAgendamento> agendamento = ctx.TbAgendamento.Include(x => x.IdClienteNavigation)
@@ -26,6 +26,7 @@ namespace backend.Database
         {
                 Models.TbAgendamento fed=ctx.TbAgendamento.FirstOrDefault(x=>x.IdAgendamento==id);
                 fed.VlFeedback=req.Feedback;
+                fed.BtFeedbackDado=true;
                 ctx.SaveChanges();
                 return fed;
         }
