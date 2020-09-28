@@ -20,12 +20,12 @@ export default class TestDriveApi{
         }
 
         async agendar(req,id) {
-            const resp = await api.post(`/Cliente/cliente/${id}`,req);
+            const resp = await api.post(`/Cliente/${id}`,req);
           
             return resp.data;
         }
 
-        async feedback(id,req){
+        async feedback(req,id){
             const resp = await api.put(`/Cliente/feedback/${id}`, req);
              return resp;
         }

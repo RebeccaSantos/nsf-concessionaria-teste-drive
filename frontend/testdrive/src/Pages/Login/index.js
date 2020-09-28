@@ -27,7 +27,7 @@ export default function Logar() {
         navegacao.push("/menuFuncionario",a.data)
       }
     } catch (e) {
-      toast.error(e.response.data.msg);
+      toast.error("Verifique os campos username e senha.");
     }
   }
 
@@ -59,6 +59,7 @@ export default function Logar() {
 
       </div>
       </form>
+      <ToastContainer />
     </div>
   );
 }

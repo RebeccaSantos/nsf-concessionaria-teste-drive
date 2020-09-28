@@ -11,7 +11,7 @@ export default function MenuCliente(props){
                 <h1>Olá {props.location.state.nome}</h1>
             </div>
             <div className="text-center">
-               <h3><Link to={{pathname:"/Consultar", state: infos}}>Consultar agendamentos aprovados</Link></h3>
+               <h3><Link to={{pathname:"/Consultar", state: infos}}>Consultar meus agendamentos</Link></h3>
 
                <h3><Link to={{pathname:"/Cadastrar", state: infos}}>Agendar</Link></h3>
             </div>

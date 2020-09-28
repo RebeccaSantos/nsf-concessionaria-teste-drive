@@ -53,7 +53,7 @@ export default function Consultar(props) {
                             <td>
                               {
                                 item.situacao == "Concluido" ? (
-                                  <Link to={{pathname:"/feedback", state: infos}}>Dar feedback</Link>
+                                  <Link to={{pathname:"/feedback", state: item}}>Dar feedback</Link>
                                 ) : (
                                   <p>Ainda não é possivel dar feedback</p>
                                 )
@@ -63,6 +63,7 @@ export default function Consultar(props) {
                     )}
                 </tbody>
             </table>
+            <Link to={{pathname:"/menuCliente", state: infos}}>Voltar para o menu</Link>
     </div>
   );
 }
