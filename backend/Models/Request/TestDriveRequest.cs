@@ -22,5 +22,9 @@ namespace backend.Models.Request
         {
             public int IdFuncionario{get;set;}
         }
+        public class InformarSituacao
+        {
+            public string Situacao { get; set; }
+        }
    }
 }

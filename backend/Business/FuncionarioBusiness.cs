@@ -28,21 +28,12 @@ namespace backend.Business
            validador.Validacao(idagendamento);
            return database.VerificarDisponibilidade(idagendamento,idFuncionario);
        }
-        public Models.TbAgendamento CancelarAgendamento(int idAgendamento)
+        public Models.TbAgendamento AlterarSituacao(int idAgendamento,Models.Request.TestDriveRequest.InformarSituacao situacao)
         {
            validador.Validacao(idAgendamento);
-           return database.CancelarAgendamento(idAgendamento);
+           return database.AlterarSituacao(idAgendamento,situa);
         }
-        public Models.TbAgendamento ConfirmarComprecimento(int idAgendamento)
-        {
-            validador.Validacao(idAgendamento);
-           return database.ConfirmarComprecimento(idAgendamento);
-        }
-        public Models.TbAgendamento ConfirmarFalta(int idAgendamento)
-        {
-            validador.Validacao(idAgendamento);
-           return database.ConfirmarFalta(idAgendamento);
-        }
+        
 
     }
 }

@@ -8,12 +8,12 @@ namespace backend.Database
     public class FuncionarioDatabase
     {
         Models.testDriveContext ctx = new Models.testDriveContext();
-       public List<Models.TbAgendamento> Listar(int idfuncionario)
+       public List<Models.TbAgendamento> Listar()
         {
             return ctx.TbAgendamento.Include(x => x.IdClienteNavigation)
                                             .Include(x => x.IdFuncionarioNavigation)
                                             .Include(x => x.IdCarroNavigation)
-                                            .Where(x => x.IdFuncionario == idfuncionario).ToList();
+                                            .Where(x => x.IdFuncionario == null).ToList();
         }
 
         public List<Models.TbAgendamento> ListarAgendamentos(int id)
@@ -57,27 +57,14 @@ namespace backend.Database
                   return AprovarAgendamento(tabela);
                }
         }
-        public Models.TbAgendamento CancelarAgendamento(int idAgendamento)
+        public Models.TbAgendamento AlterarSituacao(int idAgendamento,string Situacao)
         {
             Models.TbAgendamento tabela = ctx.TbAgendamento.FirstOrDefault(x => x.IdAgendamento == idAgendamento);
-            tabela.DsSituacao = "Cancelado";
+            tabela.DsSituacao = Situacao;
             ctx.SaveChanges();
             return tabela;
         }
-        public Models.TbAgendamento ConfirmarComprecimento(int idAgendamento)
-        {
-            Models.TbAgendamento tabela = ctx.TbAgendamento.FirstOrDefault(x => x.IdAgendamento == idAgendamento);
-            tabela.DsSituacao = "Compareceu";
-            ctx.SaveChanges();
-            return tabela;
-        }
-        public Models.TbAgendamento ConfirmarFalta(int idAgendamento)
-        {
-            Models.TbAgendamento tabela = ctx.TbAgendamento.FirstOrDefault(x => x.IdAgendamento == idAgendamento);
-            tabela.DsSituacao = "Não compareceu";
-            ctx.SaveChanges();
-            return tabela;
-        }
+        
 
     }
 }

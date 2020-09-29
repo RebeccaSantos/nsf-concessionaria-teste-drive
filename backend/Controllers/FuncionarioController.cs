@@ -15,12 +15,12 @@ namespace backend.Controllers
          Business.FuncionarioBusiness business = new Business.FuncionarioBusiness();
          Utils.TestDriveConversor conversor = new Utils.TestDriveConversor();
 
-        [HttpGet("agendamentos/{idfuncionario}")]
-          public ActionResult<List<Models.Response.TestDriveResponse.Aprovar>> ListarFuncionarios(int idfuncionario)
+        [HttpGet("agendamentos")]
+          public ActionResult<List<Models.Response.TestDriveResponse.Aprovar>> ListarAgendamentosSemFuncionario()
           {
              try
              {
-                 List<Models.TbAgendamento> funcionario=business.Listar(idfuncionario);
+                 List<Models.TbAgendamento> funcionario=business.Listar();
                  return funcionario.Select(x=>conversor.ParaResponseAprovar(x)).ToList();
              }
              catch (System.Exception e)
@@ -46,7 +46,7 @@ namespace backend.Controllers
               }
           }
 
-          [HttpPut("{idagendamento}")]
+          [HttpPut("aprovar/{idagendamento}")]
           public ActionResult<Models.Response.TestDriveResponse.Aprovar> AprovarAgendamento(int idagendamento,Models.Request.TestDriveRequest.id id)
           {
               try
@@ -58,12 +58,12 @@ namespace backend.Controllers
                   return BadRequest(new Models.Response.erro(400,e.Message));
               }
           } 
-          [HttpPut("Cancelar/{id}")]
-         public ActionResult<Models.Response.TestDriveResponse.Aprovar> CancelarAgendamento(int id)
+          [HttpPut("alterar/{idagendamento}")]
+         public ActionResult<Models.Response.TestDriveResponse.Aprovar> CancelarAgendamento(int idagendamento,Models.Request.TestDriveRequest.InformarSituacao situacao)
          {
               try
               {
-                  return conversor.ParaResponseAprovar(business.CancelarAgendamento(id));
+                  return conversor.ParaResponseAprovar(business.AlterarSituacao(idagendamento,situacao.Situacao));
               }
               catch (System.Exception e)
               {
@@ -71,31 +71,6 @@ namespace backend.Controllers
                   return new NotFoundObjectResult(new Models.Response.erro(404,e.Message));
               }
          }
-         [HttpPut("Comparecimento/{idagenda}")]
-         public ActionResult<Models.Response.TestDriveResponse.Aprovar> ConfirmarComparecimento(int idagenda)
-         {
-              try
-              {
-                  return conversor.ParaResponseAprovar(business.ConfirmarComprecimento(idagenda));
-              }
-              catch (System.Exception e)
-              {
-                  
-                  return new NotFoundObjectResult(new Models.Response.erro(404,e.Message));
-              }
-         }
-        [HttpPut("Falta/{idagendar}")]
-         public ActionResult<Models.Response.TestDriveResponse.Aprovar> ConfirmarFalta(int idagendar)
-         {
-              try
-              {
-                  return conversor.ParaResponseAprovar(business.ConfirmarFalta(idagendar));
-              }
-              catch (System.Exception e)
-              {
-                  
-                  return new NotFoundObjectResult(new Models.Response.erro(404,e.Message));
-              }
-         }
+ 
     }
 }
