@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import testDriveAPI from "../../Service/TestDriveApi";
 const api = new testDriveAPI();
 
-export default function Feedback(props){
+export default function MudarSituacaoDoAgendamento(props){
 
   console.log(props.location.state)
 
@@ -18,14 +18,14 @@ export default function Feedback(props){
 
   console.log(nota);
 
-  const feed = async () => {
+  const mudarSituacao = async () => {
     try {
       const m = {
         Feedback: nota
       };
       console.log(m);
       console.log("id:"+infos.id)
-      const response = await api.feedback(infos.id, m);
+      const response = await api.agendamentosDoDia();
       navegacao.goBack();
       } catch (e) {
         console.log(e.response)
@@ -36,10 +36,14 @@ export default function Feedback(props){
     return(
         <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight:"90vh", minWidth:"100vw"}}>
             <div className="text-center">
-                <h5>Dê uma nota de 0 a 10 para a sua experiência</h5>
-                <input id="nota" type="number" value={nota} onChange={(e) => setNota(Number(e.target.value))}></input>
+                <select>
+                    <option value="Escolha uma sitacao" disabled selected>Escolha uma sitacao</option>
+                    <option>Cancelado</option>
+                    <option>Não comparecido</option>
+                    <option>Comparecido</option>
+                </select>
             </div>
-            <button className="btn btn-primary mt-4" onClick={feed}>Dar feedback</button>
+            <button className="btn btn-primary mt-4" onClick={mudarSituacao}>Mudar Situacao</button>
             <Link className="mt-4" to={{pathname:"/consultar", state: infos}}>Voltar</Link>
         </div> 
     )

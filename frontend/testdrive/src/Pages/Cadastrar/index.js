@@ -78,7 +78,7 @@ export default function Cadastrar(props) {
           </div>
             
   
-          <div className="button">
+          <div className="mt-4 mb-3">
             <button type="button" class="btn btn-primary" onClick={agendar}>Agendar!</button>
           </div>
 
