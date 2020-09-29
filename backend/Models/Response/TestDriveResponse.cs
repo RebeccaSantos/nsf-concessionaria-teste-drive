@@ -59,5 +59,11 @@ namespace backend.Models.Response
             public string  CateiraTrabalho { get; set; }
             public string Email { get; set; }
         }
+        public class  Aprovar
+        {
+            public int Id { get; set; }
+           public DateTime?  Dia { get; set; }
+            public string Situacao{ get; set; }
+        }
     }
 }

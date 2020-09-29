@@ -109,5 +109,13 @@ namespace backend.Utils
 
         return f;
     }
+    public Models.Response.TestDriveResponse.Aprovar ParaResponseAprovar(Models.TbAgendamento tabela)
+    {
+        Models.Response.TestDriveResponse.Aprovar aprovar= new Models.Response.TestDriveResponse.Aprovar();
+        aprovar.Id = tabela.IdAgendamento;
+        aprovar.Situacao = tabela.DsSituacao;
+        aprovar.Dia = tabela.DtAgendamento;
+         return aprovar;
+    }
 }
 }

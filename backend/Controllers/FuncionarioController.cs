@@ -15,13 +15,13 @@ namespace backend.Controllers
          Business.FuncionarioBusiness business = new Business.FuncionarioBusiness();
          Utils.TestDriveConversor conversor = new Utils.TestDriveConversor();
 
-        [HttpGet("funcionarios")]
-          public ActionResult<List<Models.Response.TestDriveResponse.Funcionario>> ListarFuncionarios()
+        [HttpGet("agendamentos")]
+          public ActionResult<List<Models.Response.TestDriveResponse.Aprovar>> ListarFuncionarios()
           {
              try
              {
-                 List<Models.TbFuncionario> funcionario=business.ListarFuncionarios();
-                 return funcionario.Select(x=>conversor.ParaResponseFuncionario(x)).ToList();
+                 List<Models.TbAgendamento> funcionario=business.ListarAgendamentos();
+                 return funcionario.Select(x=>conversor.ParaResponseAprovar(x)).ToList();
              }
              catch (System.Exception e)
              {
@@ -30,12 +30,12 @@ namespace backend.Controllers
              }
           }
 
-          [HttpGet]
-          public ActionResult<List<Models.Response.TestDriveResponse.ClienteAgendamento>> ListarAgendamentos()
+          [HttpGet("{idfuncionario}")]
+          public ActionResult<List<Models.Response.TestDriveResponse.ClienteAgendamento>> ListarAgendamentos(int idfuncionario)
           {
               try
               {
-                List<Models.TbAgendamento> agendamentos = business.ListarAgendamentos();
+                List<Models.TbAgendamento> agendamentos = business.ListarAgendamentos(idfuncionario);
                 List<Models.Response.TestDriveResponse.ClienteAgendamento> resp = agendamentos
                                     .Select(x => conversor.ParaResponseagenda(x)).ToList();
                 return resp; 
@@ -46,12 +46,12 @@ namespace backend.Controllers
               }
           }
 
-          [HttpPut("{id}")]
-          public ActionResult<Models.Response.TestDriveResponse.ClienteAgendamento> AprovarAgendamento(int id)
+          [HttpPut("{idagendamento}")]
+          public ActionResult<Models.Response.TestDriveResponse.Aprovar> AprovarAgendamento(int idagendamento)
           {
               try
               {
-                  return conversor.ParaResponseagenda(business.AprovarAgendamento(id));
+                  return conversor.ParaResponseAprovar(business.AprovarAgendamento(idagendamento));
               }
               catch (System.Exception e)
               {

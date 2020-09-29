@@ -8,19 +8,19 @@ namespace backend.Business
     {
         Validar.ValidardorTestDrive validador = new Validar.ValidardorTestDrive();
         Database.FuncionarioDatabase database = new Database.FuncionarioDatabase();
-        public List<Models.TbFuncionario> ListarFuncionarios()
+        public List<Models.TbAgendamento> ListarAgendamentos()
         {
-            List<Models.TbFuncionario> funcionarios=database.ListarFuncionarios();
+            List<Models.TbAgendamento> agendamento=database.ListarAgendamentos();
 
-               if(funcionarios.Count==0)
+               if(agendamento.Count==0)
                   throw new ArgumentException("ainda não há registros");
 
-                  return  funcionarios;
+                  return  agendamento;
         }
 
-       public List<Models.TbAgendamento> ListarAgendamentos()
+       public List<Models.TbAgendamento> ListarAgendamentos(int id)
        {
-           return database.ListarAgendamentos();
+           return database.ListarAgendamentos(id);
        } 
 
        public Models.TbAgendamento AprovarAgendamento(int idagendamento)
