@@ -18,5 +18,9 @@ namespace backend.Models.Request
         {
             public decimal Feedback { get; set; }
         }
+        public class id
+        {
+            public int IdFuncionario{get;set;}
+        }
    }
 }
