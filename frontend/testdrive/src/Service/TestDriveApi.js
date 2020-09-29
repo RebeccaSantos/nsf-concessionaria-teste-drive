@@ -34,5 +34,10 @@ export default class TestDriveApi{
             const resp = await api.get(`/Carro/Consultar/Carro`);
              return resp;
         }
+
+        async agendamentosDoDia(id){
+            const resp = await api.get(`/Funcionario/${id}`);
+            return resp;
+        }
     
 }

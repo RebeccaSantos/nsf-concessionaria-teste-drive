@@ -52,7 +52,7 @@ export default function Consultar(props) {
                             <td>{item.situacao}</td>
                             <td>
                               {
-                                item.situacao == "Concluido" ? (
+                                item.situacao == "Comparecido"|| item.situacao == "Concluido" ? (
                                   item.feedback == false ? (
                                     <Link to={{pathname:"/feedback", state: item}}>Dar feedback</Link>
                                   ) : (
