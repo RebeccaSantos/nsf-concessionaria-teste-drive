@@ -8,7 +8,8 @@ import MenuCliente from './Pages/MenuCliente';
 import MenuFuncionario from './Pages/MenuFuncionario';
 import AprovarAgendamentosFuncionario from './Pages/AprovarAgendamentosFuncionario';
 import AgendamentosDoDiaFuncionario from './Pages/AgendamenosDoDiaFuncionario';
-import Feedback from './Pages/Feedback'
+import Feedback from './Pages/Feedback';
+import MudarSituacaoDoAgendamentoDoDia from './Pages/MudarSituacaoDoAgendamentoDoDia';
 
 function Rotas(){
     return(
@@ -22,6 +23,7 @@ function Rotas(){
           <Route path="/aprovarAgendamentos" component={AprovarAgendamentosFuncionario}/>
           <Route path="/agendamentosDoDiaFunc" component={AgendamentosDoDiaFuncionario}/>
           <Route path="/feedback" component={Feedback}/>
+          <Route path="/mudarSituacaoDoAgendamentoDoDia" component={MudarSituacaoDoAgendamentoDoDia}/>
         </Switch>
       </BrowserRouter>
     )

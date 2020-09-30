@@ -21,7 +21,6 @@ namespace backend.Database
             return ctx.TbAgendamento.Include(x => x.IdClienteNavigation)
                                             .Include(x => x.IdFuncionarioNavigation)
                                             .Include(x => x.IdCarroNavigation).Where(x => x.IdFuncionario == id &&
-                                            x.DsSituacao == "Aprovado" &&
                                             x.DtAgendamento.Value.Day == DateTime.Now.Day &&
                                             x.DtAgendamento.Value.Month == DateTime.Now.Month &&
                                             x.DtAgendamento.Value.Year == DateTime.Now.Year).ToList();

@@ -14,18 +14,18 @@ export default function MudarSituacaoDoAgendamento(props){
   const navegacao = useHistory();
 
   const [infos, setInfos] = useState(props.location.state);
-  const [nota,setNota] = useState();
+  const [situacao,setSituacao] = useState("");
 
-  console.log(nota);
+  console.log(infos)
+  console.log(situacao)
+  console.log(infos.id)
 
   const mudarSituacao = async () => {
     try {
       const m = {
-        Feedback: nota
+        Situacao: situacao
       };
-      console.log(m);
-      console.log("id:"+infos.id)
-      const response = await api.agendamentosDoDia();
+      const response = await api.mudarSituacaoDogendamentoDoDia(infos.id,m);
       navegacao.goBack();
       } catch (e) {
         console.log(e.response)
@@ -36,15 +36,15 @@ export default function MudarSituacaoDoAgendamento(props){
     return(
         <div className="d-flex flex-column align-items-center justify-content-center" style={{minHeight:"90vh", minWidth:"100vw"}}>
             <div className="text-center">
-                <select>
-                    <option value="Escolha uma sitacao" disabled selected>Escolha uma sitacao</option>
-                    <option>Cancelado</option>
-                    <option>Não comparecido</option>
-                    <option>Comparecido</option>
+                <select name="siatuacao" id="situa" onChange={(e) => setSituacao(String(e.target.value))}>
+                    <option disabled selected>Escolha uma sitacao</option>
+                    <option value="Cancelado">Cancelado</option>
+                    <option value="Não comparecido">Não comparecido</option>
+                    <option value="Comparecido">Comparecido</option>
+                    <option value="Concluido">Concluido</option>
                 </select>
             </div>
             <button className="btn btn-primary mt-4" onClick={mudarSituacao}>Mudar Situacao</button>
-            <Link className="mt-4" to={{pathname:"/consultar", state: infos}}>Voltar</Link>
         </div> 
     )
 }

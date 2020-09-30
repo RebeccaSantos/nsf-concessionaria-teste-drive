@@ -25,6 +25,7 @@ namespace backend.Models.Response
             public DateTime?  Dia { get; set; }
             public string Situacao{ get; set; }
             public bool? Feedback { get; set; }
+            public decimal? ValorDoFeed { get; set; }
 
         }
         

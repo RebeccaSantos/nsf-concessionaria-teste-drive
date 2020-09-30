@@ -44,6 +44,7 @@ namespace backend.Utils
             agendamento.Id=ag.IdAgendamento;
             agendamento.Nome=ag.IdClienteNavigation.NmCliente;
             agendamento.Cpf=ag.IdClienteNavigation.DsCpf;
+            agendamento.ValorDoFeed = ag.VlFeedback;
              if(ag.IdFuncionarioNavigation==null)
                  agendamento.Funcionario="Ainda não definido";
             else
