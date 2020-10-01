@@ -25,7 +25,7 @@ export default function AgendamentosDoDiaFuncionario(props){
         let ano = n.substring(0,4);
         let mes = n.substring(5,7);
         let dia = n.substring(8,10);
-        return `Olá (FUNCIONARIO) hoje é dia: ${dia}/${mes}/${ano}`
+        return `Olá ${infos.nome} hoje é dia: ${dia}/${mes}/${ano}`
     }
 
     useEffect(() => {
