@@ -44,5 +44,16 @@ export default class TestDriveApi{
             const resp = await api.put(`/Funcionario/alterar/${idAgendamento}`,modeloSituacao);
             return resp;
         }
+
+        async listarAgendamentosParaAprovar(idAgendamento){
+            const resp = await api.get(`/Funcionario/agendamentos/${idAgendamento}`);
+            return resp;
+
+        }
+
+        async aprovarAgendamentos(idAgendamento){
+            const resp = await api.put(`/Funcionario/alterar/${idAgendamento}`);
+            return resp;
+        }
     
 }
