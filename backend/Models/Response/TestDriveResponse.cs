@@ -62,9 +62,13 @@ namespace backend.Models.Response
         }
         public class  Aprovar
         {
-            public int Id { get; set; }
-           public DateTime?  Dia { get; set; }
+            public int IdAgendamento { get; set; }
+            public DateTime?  Dia { get; set; }
             public string Situacao{ get; set; }
+            public string NomeCliente { get; set; }
+            public string Carro { get; set; }
+            public string CPF { get; set; }
+
         }
     }
 }

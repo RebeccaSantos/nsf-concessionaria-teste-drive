@@ -60,7 +60,9 @@ export default function AgendamentosDoDiaFuncionario(props){
                                 "Ainda sem feedback."
                                 : item.valorDoFeed}</td>
                                 <td>
-                                    <Link to={{pathname:"/mudarSituacaoDoAgendamentoDoDia", state:item}}>Mudar Situação</Link>
+                                    {item.situacao == "Concluido" ?
+                                    <div></div>
+                                    : <Link to={{pathname:"/mudarSituacaoDoAgendamentoDoDia", state:item}}>Mudar Situação</Link>}
                                 </td>
                             </tr>    
                         )}

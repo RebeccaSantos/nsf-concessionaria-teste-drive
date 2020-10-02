@@ -21,7 +21,7 @@ namespace backend.Controllers
              try
              {
                  List<Models.TbAgendamento> funcionario=business.Listar();
-                 return funcionario.Select(x=>conversor.ParaResponseAprovar(x)).ToList();
+                 return funcionario.Select(x=>conversor.ParaResponseConsultar(x)).ToList();
              }
              catch (System.Exception e)
              {
@@ -46,16 +46,16 @@ namespace backend.Controllers
               }
           }
 
-          [HttpPut("aprovar/{idagendamento}")]
-          public ActionResult<Models.Response.TestDriveResponse.Aprovar> AprovarAgendamento(int idagendamento,Models.Request.TestDriveRequest.id id)
+          [HttpPut("aprovar/{IdAgendamento}/{IdFuncionario}")]
+          public ActionResult<Models.Response.TestDriveResponse.Aprovar> AprovarAgendamento(int IdAgendamento, int IdFuncionario)
           {
               try
               {
-                  return conversor.ParaResponseAprovar(business.AprovarAgendamento(idagendamento,id.IdFuncionario));
+                return conversor.ParaResponseAprovar(business.AprovarAgendamento(IdAgendamento,IdFuncionario));
               }
               catch (System.Exception e)
               {
-                  return BadRequest(new Models.Response.erro(400,e.Message));
+                return BadRequest(new Models.Response.erro(400,e.Message));
               }
           } 
           [HttpPut("alterar/{idagendamento}")]

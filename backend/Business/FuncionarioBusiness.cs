@@ -12,10 +12,7 @@ namespace backend.Business
         {
             List<Models.TbAgendamento> agendamento=database.Listar();
 
-               if(agendamento.Count==0)
-                  throw new ArgumentException("ainda não há registros");
-
-                  return  agendamento;
+            return  agendamento;
         }
 
        public List<Models.TbAgendamento> ListarAgendamentos(int id)

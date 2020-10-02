@@ -80,43 +80,55 @@ namespace backend.Utils
             return agendar;
         }
     
-    public Models.Response.TestDriveResponse.ResponseFeedback ParaResponseFeedback(Models.TbAgendamento tb)
-    {
-        Models.Response.TestDriveResponse.ResponseFeedback response=new Models.Response.TestDriveResponse.ResponseFeedback();
-        response.Feedback=tb.VlFeedback;
+        public Models.Response.TestDriveResponse.ResponseFeedback ParaResponseFeedback(Models.TbAgendamento tb)
+        {
+            Models.Response.TestDriveResponse.ResponseFeedback response=new Models.Response.TestDriveResponse.ResponseFeedback();
+            response.Feedback=tb.VlFeedback;
 
-        return response;
-    }
-    public Models.Response.TestDriveResponse.Carro ParaResponseCarro(Models.TbCarro tb)
-    {
-        Models.Response.TestDriveResponse.Carro response=new Models.Response.TestDriveResponse.Carro();
-        response.IdCarro=tb.IdCarro;
-        response.Marca=tb.DsMarca;
-        response.Modelo=tb.DsModelo;
-        response.Fabricacao=tb.NrAnoFab;
-        response.AnoModelo=tb.NrAnoModel;
-        response.Placa=tb.DsPlaca;
-        
-        return response;
+            return response;
+        }
+        public Models.Response.TestDriveResponse.Carro ParaResponseCarro(Models.TbCarro tb)
+        {
+            Models.Response.TestDriveResponse.Carro response=new Models.Response.TestDriveResponse.Carro();
+            response.IdCarro=tb.IdCarro;
+            response.Marca=tb.DsMarca;
+            response.Modelo=tb.DsModelo;
+            response.Fabricacao=tb.NrAnoFab;
+            response.AnoModelo=tb.NrAnoModel;
+            response.Placa=tb.DsPlaca;
+            
+            return response;
 
-    }
-    public Models.Response.TestDriveResponse.Funcionario ParaResponseFuncionario(Models.TbFuncionario funcionario)
-    {
-        Models.Response.TestDriveResponse.Funcionario f=new Models.Response.TestDriveResponse.Funcionario();
-        f.IdFuncionario=funcionario.IdFuncionario;
-        f.Nome=funcionario.NmFuncionario;
-        f.CateiraTrabalho=funcionario.DsCarteiraTrabalho;
-        f.Email=funcionario.DsEmail;
+        }
+        public Models.Response.TestDriveResponse.Funcionario ParaResponseFuncionario(Models.TbFuncionario funcionario)
+        {
+            Models.Response.TestDriveResponse.Funcionario f=new Models.Response.TestDriveResponse.Funcionario();
+            f.IdFuncionario=funcionario.IdFuncionario;
+            f.Nome=funcionario.NmFuncionario;
+            f.CateiraTrabalho=funcionario.DsCarteiraTrabalho;
+            f.Email=funcionario.DsEmail;
 
-        return f;
+            return f;
+        }
+        public Models.Response.TestDriveResponse.Aprovar ParaResponseConsultar(Models.TbAgendamento tabela)
+        {
+            Models.Response.TestDriveResponse.Aprovar aprovar= new Models.Response.TestDriveResponse.Aprovar();
+            aprovar.IdAgendamento = tabela.IdAgendamento;
+            aprovar.Dia = tabela.DtAgendamento;
+            aprovar.Situacao = tabela.DsSituacao;
+            aprovar.NomeCliente = tabela.IdClienteNavigation.NmCliente;
+            aprovar.Carro = tabela.IdCarroNavigation.DsModelo;
+            aprovar.CPF = tabela.IdClienteNavigation.DsCpf;
+            return aprovar;
+        }
+        public Models.Response.TestDriveResponse.Aprovar ParaResponseAprovar(Models.TbAgendamento tabela)
+        {
+            Models.Response.TestDriveResponse.Aprovar aprovar= new Models.Response.TestDriveResponse.Aprovar();
+            aprovar.IdAgendamento = tabela.IdAgendamento;
+            aprovar.Dia = tabela.DtAgendamento;
+            aprovar.Situacao = tabela.DsSituacao;
+
+            return aprovar;
+        }
     }
-    public Models.Response.TestDriveResponse.Aprovar ParaResponseAprovar(Models.TbAgendamento tabela)
-    {
-        Models.Response.TestDriveResponse.Aprovar aprovar= new Models.Response.TestDriveResponse.Aprovar();
-        aprovar.Id = tabela.IdAgendamento;
-        aprovar.Situacao = tabela.DsSituacao;
-        aprovar.Dia = tabela.DtAgendamento;
-         return aprovar;
-    }
-}
 }

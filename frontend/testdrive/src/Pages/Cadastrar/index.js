@@ -31,7 +31,7 @@ export default function Cadastrar(props) {
         Agendamento  : b
       };
       const response = await api.agendar(m, infos.idCliente);
-      toast.dark('🚀 Agendado, espere a aprovação');
+      toast.dark('Agendado, espere a aprovação');
     } catch (e) {
       toast.error(e.response.data.msg);
     }
